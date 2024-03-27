@@ -5,8 +5,8 @@ import 'package:smart_license/customwidget/container.dart';
 import 'package:smart_license/main.dart';
 import 'package:smart_license/screens/profilescreen.dart';
 
-class Homescreen extends StatelessWidget {
-  Homescreen({super.key});
+class trafficHomescreen extends StatelessWidget {
+  trafficHomescreen({super.key});
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 

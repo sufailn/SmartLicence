@@ -18,8 +18,8 @@ class viewvechicle extends StatelessWidget {
                     child: ExpansionTile(
                   expandedAlignment: Alignment.bottomLeft,
                   leading: CircleAvatar(),
-                  title: Text("hi"),
-                  subtitle: Text('34546568'),
+                  title: Text("Swift VXI"),
+                  subtitle: Text('KL-11-BC-987'),
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -60,6 +60,13 @@ class viewvechicle extends StatelessWidget {
                                     Text("Seating Capacity"),
                                     Text("Tax licence No."),
                                     Text("Date of Delivery"),
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "pending fine ⚠️ ",
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -98,6 +105,7 @@ class viewvechicle extends StatelessWidget {
                   ],
                 ));
               },
+              itemCount: 1,
             ),
           )
         ],

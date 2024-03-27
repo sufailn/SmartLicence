@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:smart_license/auth/login.dart';
 import 'package:smart_license/auth/sighup.dart';
 import 'package:smart_license/screens/profilescreen.dart';
+import 'package:smart_license/screens/trafic/fine.dart';
+import 'package:smart_license/screens/trafic/searchlicence.dart';
+import 'package:smart_license/screens/trafic/searchvechicle.dart';
 import 'package:smart_license/screens/user/home.dart';
 import 'package:smart_license/screens/user/showvechicle.dart';
 import 'package:smart_license/screens/user/viewlicense.dart';
+import 'package:smart_license/screens/user/viewnotification.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: ProfileThreePage()
       // home: Signup(),
-      home: Homescreen(),
+      home: Fine(),
       // home: ShowLisence(),
     );
   }
