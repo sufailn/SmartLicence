@@ -4,6 +4,9 @@ import 'package:flutter/widgets.dart';
 import 'package:smart_license/customwidget/container.dart';
 import 'package:smart_license/main.dart';
 import 'package:smart_license/screens/profilescreen.dart';
+import 'package:smart_license/screens/trafic/searchlicence.dart';
+import 'package:smart_license/screens/trafic/searchvechicle.dart';
+import 'package:smart_license/screens/trafic/trafficnotification.dart';
 
 class trafficHomescreen extends StatelessWidget {
   trafficHomescreen({super.key});
@@ -55,130 +58,133 @@ class trafficHomescreen extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                Container(
-                  height: 752,
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
-                    child: Image.asset(
-                      "assets/images/tfchome.png",
-                      fit: BoxFit.cover,
+        child: Container(
+          child: Stack(
+            children: [
+              Column(
+                children: [
+                  Container(
+                    height: 752,
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(15),
+                          bottomRight: Radius.circular(15)),
+                      child: Image.asset(
+                        "assets/images/tfchome.png",
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                    ),
+                  )
+                ],
+              ),
+              Positioned(
+                top: 10,
+                child: Container(
+                  width: width,
+                  //color: Colors.amber,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                _scaffoldKey.currentState?.openDrawer();
+                              },
+                              icon: Icon(Icons.menu)),
+                          Text(
+                            "Smart ",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "License.",
+                            style: TextStyle(
+                                color: Colors.red,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(right: 8),
+                      //   child: Container(
+                      //     decoration: BoxDecoration(
+                      //         color: Colors.white.withOpacity(0),
+                      //         border:
+                      //             Border.all(color: Colors.red.withOpacity(0.5)),
+                      //         borderRadius: BorderRadius.circular(7)),
+                      //     width: 200,
+                      //     child: CupertinoSearchTextField(),
+                      //   ),
+                      // )
+                    ],
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    color: Color.fromARGB(255, 255, 255, 255),
-                  ),
-                )
-              ],
-            ),
-            Positioned(
-              top: 10,
-              child: Container(
-                width: width,
-                //color: Colors.amber,
+              ),
+              Positioned(
+                left: MediaQuery.of(context).size.width * 0.050,
+                top: 350,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              _scaffoldKey.currentState?.openDrawer();
-                            },
-                            icon: Icon(Icons.menu)),
-                        Text(
-                          "Smart ",
-                          style: TextStyle(
-                              color: Colors.blue,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "License.",
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
+                    InkWell(
+                      onTap: () {
+                        navigation(context, Searchvechicle());
+                      },
+                      child: CustomeContainer(
+                        label: "vehicle",
+                        icon: Icons.drive_eta_outlined,
+                      ),
                     ),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(right: 8),
-                    //   child: Container(
-                    //     decoration: BoxDecoration(
-                    //         color: Colors.white.withOpacity(0),
-                    //         border:
-                    //             Border.all(color: Colors.red.withOpacity(0.5)),
-                    //         borderRadius: BorderRadius.circular(7)),
-                    //     width: 200,
-                    //     child: CupertinoSearchTextField(),
-                    //   ),
-                    // )
+                    SizedBox(width: 15),
+                    InkWell(
+                      onTap: () {
+                        navigation(context, searchlicense());
+                        print("license");
+                      },
+                      child: CustomeContainer(
+                        label: "license",
+                        icon: Icons.document_scanner_outlined,
+                      ),
+                    ),
+                    SizedBox(width: 15),
+                    InkWell(
+                      onTap: () {
+                        navigation(context, trafficnotification());
+                      },
+                      child: CustomeContainer(
+                        label: "Notification",
+                        icon: Icons.notifications_on_outlined,
+                      ),
+                    ),
                   ],
                 ),
               ),
-            ),
-            Positioned(
-              left: MediaQuery.of(context).size.width * 0.050,
-              top: 350,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      print("ok");
-                    },
-                    child: CustomeContainer(
-                      label: "vehicle",
-                      icon: Icons.drive_eta_outlined,
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  InkWell(
-                    onTap: () {
-                      print("license");
-                    },
-                    child: CustomeContainer(
-                      label: "license",
-                      icon: Icons.document_scanner_outlined,
-                    ),
-                  ),
-                  SizedBox(width: 15),
-                  CustomeContainer(
-                    label: "Notification",
-                    icon: Icons.notifications_on_outlined,
-                  ),
-                  // SizedBox(width: 15),
-                  // CustomeContainer(
-                  //   label: "About",
-                  //   icon: Icons.document_scanner_outlined,
-                  // )
-                ],
+              Container(
+                height: 20,
               ),
-            ),
-            Container(
-              height: 20,
-            ),
-            Positioned(
-              left: 100,
-              top: 480, // Adjust the top position as needed
-              child: CustomeContainer(
-                  label: "About", icon: Icons.assignment_late_outlined),
-            ),
-            Positioned(
-              left: 220,
-              top: 480, // Adjust the top position as needed
-              child: CustomeContainer(label: "logout", icon: Icons.logout),
-            )
-          ],
+              Positioned(
+                left: 100,
+                top: 480, // Adjust the top position as needed
+                child: CustomeContainer(
+                    label: "About", icon: Icons.assignment_late_outlined),
+              ),
+              Positioned(
+                left: 220,
+                top: 480, // Adjust the top position as needed
+                child: CustomeContainer(label: "logout", icon: Icons.logout),
+              )
+            ],
+          ),
         ),
       ),
     );

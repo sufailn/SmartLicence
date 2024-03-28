@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_license/main.dart';
+import 'package:smart_license/screens/trafic/traffichome.dart';
+import 'package:smart_license/screens/user/home.dart';
 
 class searchlicense extends StatelessWidget {
   const searchlicense({super.key});
@@ -14,19 +17,30 @@ class searchlicense extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Smart ",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "License.",
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                TextButton(
+                  onPressed: () {
+                    navigationreplacement(context, trafficHomescreen());
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        "Smart ",
+                        style: TextStyle(
+                          color: Colors.blue,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "License.",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

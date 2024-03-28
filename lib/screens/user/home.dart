@@ -4,6 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:smart_license/customwidget/container.dart';
 import 'package:smart_license/main.dart';
 import 'package:smart_license/screens/profilescreen.dart';
+import 'package:smart_license/screens/user/about.dart';
+import 'package:smart_license/screens/user/showvechicle.dart';
+import 'package:smart_license/screens/user/viewlicense.dart';
+import 'package:smart_license/screens/user/viewnotification.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
@@ -133,6 +137,7 @@ class Homescreen extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
+                    navigation(context, viewvechicle());
                     print("ok");
                   },
                   child: CustomeContainer(
@@ -143,6 +148,7 @@ class Homescreen extends StatelessWidget {
                 SizedBox(width: 15),
                 InkWell(
                   onTap: () {
+                    navigation(context, ShowLisence());
                     print("license");
                   },
                   child: CustomeContainer(
@@ -151,10 +157,16 @@ class Homescreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 15),
-                CustomeContainer(
-                  label: "Notification",
-                  icon: Icons.notifications_on_outlined,
+                InkWell(
+                  onTap: () {
+                    navigation(context, ViewNotifications());
+                  },
+                  child: CustomeContainer(
+                    label: "Notification",
+                    icon: Icons.notifications_on_outlined,
+                  ),
                 ),
+
                 // SizedBox(width: 15),
                 // CustomeContainer(
                 //   label: "About",
@@ -169,8 +181,13 @@ class Homescreen extends StatelessWidget {
           Positioned(
             left: 100,
             top: 480, // Adjust the top position as needed
-            child: CustomeContainer(
-                label: "About", icon: Icons.assignment_late_outlined),
+            child: InkWell(
+              onTap: () {
+                navigation(context, AboutScreen());
+              },
+              child: CustomeContainer(
+                  label: "About", icon: Icons.assignment_late_outlined),
+            ),
           ),
           Positioned(
             left: 220,
