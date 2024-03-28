@@ -42,32 +42,40 @@ class _FineState extends State<Fine> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Smart ",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                    TextButton(
+                      onPressed: () {},
+                      child: Row(
+                        children: [
+                          Text(
+                            "Smart ",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "License.",
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Text(
-                      "License.",
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    // Text(
+                    //   "License.",
+                    //   style: TextStyle(
+                    //     color: Colors.red,
+                    //     fontSize: 20,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
                   ],
                 ),
-                SizedBox(
-                  height: 20,
-                ),
-                // Add Image Picker Button
-                ElevatedButton(
-                  onPressed: _pickImage,
-                  child: Text('Pick Image'),
-                ),
+
                 SizedBox(
                   height: 20,
                 ),
@@ -88,6 +96,17 @@ class _FineState extends State<Fine> {
                 customtextfield(
                   label: Text('Fine amount'),
                   controller: fineController,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Add Image Picker Button
+                ElevatedButton(
+                  onPressed: _pickImage,
+                  child: Text('Pick Image'),
                 ),
                 SizedBox(
                   height: 20,

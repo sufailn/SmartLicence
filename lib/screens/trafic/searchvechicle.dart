@@ -47,12 +47,21 @@ class Searchvechicle extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("Search Vechicle"),
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue, foregroundColor: Colors.red),
+            ),
+            SizedBox(
+              height: 5,
+            ),
             Card(
                 child: ExpansionTile(
               expandedAlignment: Alignment.bottomLeft,
               leading: CircleAvatar(),
-              title: Text("hi"),
-              subtitle: Text('34546568'),
+              title: Text("Swift VXI"),
+              subtitle: Text('KL-11-BC-987'),
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
