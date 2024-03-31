@@ -7,18 +7,48 @@ class ViewNotifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Notifications'),
-      ),
+      // appBar: AppBar(
+      //     // title: Text('Notifications'),
+      //     ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Text(
+                          "Smart ",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "License.",
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )),
+              ],
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Card(
               color: Colors.red,
               child: ListTile(
-                title: Text('due..'),
-                subtitle: Text('sdfghjkl;'),
+                title: Text('Fine'),
+                subtitle: Text('fine for helmet'),
                 trailing: ElevatedButton(onPressed: () {}, child: Text('pay')),
               ),
             ),
@@ -28,12 +58,14 @@ class ViewNotifications extends StatelessWidget {
                 return Card(
                   child: ListTile(
                     title: Text('title'),
-                    subtitle: Text('descripppppppppppppppppppp'),
+                    subtitle: Text(
+                      'discription',
+                    ),
                     trailing: Text('23-23-2000'),
                   ),
                 );
               },
-              itemCount: 4,
+              itemCount: 2,
             ))
           ],
         ),

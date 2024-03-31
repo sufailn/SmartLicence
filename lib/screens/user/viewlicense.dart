@@ -13,9 +13,36 @@ class _ShowLisenceState extends State<ShowLisence> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(30),
         child: Column(
           children: [
+            TextButton(
+              onPressed: () {},
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Smart ",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    "License.",
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Container(
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0),
@@ -41,7 +68,7 @@ class _ShowLisenceState extends State<ShowLisence> {
                               Text('Blood Group:'),
                               Text('Date of Expiry:'),
                               Text('Perment Address:'),
-                              Text('Pesent Adress:'),
+                              Text('Present Adress:'),
                             ],
                           ),
                         ),
