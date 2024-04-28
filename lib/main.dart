@@ -6,7 +6,6 @@ import 'package:smart_license/screens/trafic/fine.dart';
 import 'package:smart_license/screens/trafic/searchlicence.dart';
 import 'package:smart_license/screens/trafic/searchvechicle.dart';
 import 'package:smart_license/screens/trafic/traffichome.dart';
-import 'package:smart_license/screens/trafic/trafficnotification.dart';
 import 'package:smart_license/screens/user/home.dart';
 import 'package:smart_license/screens/user/showvechicle.dart';
 import 'package:smart_license/screens/user/viewlicense.dart';
@@ -46,17 +45,19 @@ class MyApp extends StatelessWidget {
       ),
       // home: ProfileThreePage()
       // home: Signup(),
-      home: Homescreen(),
+      home: Login(),
+      //  Homescreen(),
+
       // home: ShowLisence(),
     );
   }
 }
 
-void navigation(context, screen) {
-  Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-}
+// void navigation(context, screen) {
+//   Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+// }
 
-void navigationreplacement(context, screen) {
-  Navigator.pushReplacement(
-      context, MaterialPageRoute(builder: (context) => screen));
-}
+// void navigationreplacement(context, screen) {
+//   Navigator.pushReplacement(
+//       context, MaterialPageRoute(builder: (context) => screen));
+// }

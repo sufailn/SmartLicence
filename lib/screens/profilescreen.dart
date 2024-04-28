@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_license/utils/api/loginApi.dart';
 
 class ProfileThreePage extends StatelessWidget {
   static const String path = "lib/src/pages/profile/profile3.dart";
@@ -43,19 +44,20 @@ class ProfileThreePage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Text(
-                                    "Little Butterfly",
+                                    profileDatas[0]['Name'],
                                     style:
                                         Theme.of(context).textTheme.titleLarge,
                                   ),
-                                  const ListTile(
+                                  ListTile(
                                     contentPadding: EdgeInsets.all(0),
-                                    title: Text("Male"),
+                                    title: Text(profileDatas[0]['Gender']),
                                   ),
                                   // const ListTile(
                                   //   contentPadding: EdgeInsets.all(0),
                                   //   title: Text("Licence No:LMV045111545"),
                                   // ),
-                                  Text("Licence No:LMV045111545")
+                                  Text(
+                                      "Licence No: ${profileDatas[0]['Licence_No'] ?? 'no lisence'}")
                                 ],
                               ),
                             ),
@@ -98,7 +100,7 @@ class ProfileThreePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
                                 image: NetworkImage(
-                                    "https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-james-wheeler-414612.jpg&fm=jpg"),
+                                    '$baseUrl/static/images/${profileDatas[0]['photo']}'),
                                 fit: BoxFit.cover)),
                         margin: const EdgeInsets.only(left: 16.0),
                       ),
@@ -111,19 +113,19 @@ class ProfileThreePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: Column(
-                      children: const <Widget>[
+                      children: <Widget>[
                         ListTile(
                           title: Text("User information"),
                         ),
                         Divider(),
                         ListTile(
                           title: Text("Email"),
-                          subtitle: Text("butterfly.little@gmail.com"),
+                          subtitle: Text(profileDatas[0]['Email'].toString()),
                           leading: Icon(Icons.email),
                         ),
                         ListTile(
                           title: Text("Phone"),
-                          subtitle: Text("+977-9815225566"),
+                          subtitle: Text(profileDatas[0]['Phone'].toString()),
                           leading: Icon(Icons.phone),
                         ),
                         // ListTile(
@@ -134,12 +136,12 @@ class ProfileThreePage extends StatelessWidget {
 
                         ListTile(
                           title: Text("Date of birth"),
-                          subtitle: Text("15   February 2019"),
+                          subtitle: Text(profileDatas[0]['DOB'].toString()),
                           leading: Icon(Icons.calendar_view_day),
                         ),
                         ListTile(
                           title: Text("Address"),
-                          subtitle: Text("Noothakkal paramba olv"),
+                          subtitle: Text(profileDatas[0]['Present_Address']),
                           leading: Icon(Icons.person),
                         ),
                       ],

@@ -2,17 +2,30 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_license/main.dart';
 import 'package:smart_license/screens/trafic/traffichome.dart';
+import 'package:smart_license/utils/api/loginApi.dart';
+import 'package:smart_license/utils/common/snackbar.dart';
 
-class trafficnotification extends StatelessWidget {
-  const trafficnotification({super.key});
+class ViewAccessed extends StatelessWidget {
+  const ViewAccessed({super.key, this.accessed});
+  final accessed;
 
   @override
   Widget build(BuildContext context) {
+    if (accessed.length == 0) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text('Accessed'),
+        ),
+        body: Center(
+          child: Text('No Data'),
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: TextButton(
           onPressed: () {
-            navigationreplacement(context, trafficHomescreen());
+            navigationreplace(context, TrafficHomeScreen());
           },
           child: Row(
             children: [
@@ -53,13 +66,18 @@ class trafficnotification extends StatelessWidget {
               itemBuilder: (context, index) {
                 return Card(
                   child: ListTile(
-                    title: Text('title'),
-                    subtitle: Text('description'),
-                    trailing: Text('23-23-2000'),
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          '$baseUrl/static/images/${accessed[index]['photo']}'),
+                    ),
+                    title: Text('Lisence No: ${accessed[index]['Licence_No']}'),
+                    subtitle: Text(
+                        'Name: ${accessed[index]['Name']} \nPhone: ${accessed[index]['Phone']} '),
+                    trailing: Text('Time: ${accessed[index]['time']}'),
                   ),
                 );
               },
-              itemCount: 3,
+              itemCount: accessed.length,
             ))
           ],
         ),

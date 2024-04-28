@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:smart_license/auth/forgotpassword.dart';
 import 'package:smart_license/customwidget/textfield.dart';
 import 'package:smart_license/auth/sighup.dart';
+import 'package:smart_license/utils/api/loginApi.dart';
+import 'package:smart_license/utils/common/snackbar.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController usernameController =
+      TextEditingController(text: 'SUFAILAHMD990@GMAIL.COM');
+  TextEditingController passwordController =
+      TextEditingController(text: 'Suf@123');
 
   final ValueNotifier<bool> obsecure = ValueNotifier(true);
   var formkey = GlobalKey<FormState>();
@@ -38,7 +43,7 @@ class Login extends StatelessWidget {
         ),
         child: Padding(
           padding:
-              const EdgeInsets.only(top: 100, left: 40, right: 40, bottom: 30),
+              const EdgeInsets.only(top: 100, left: 30, right: 30, bottom: 30),
           child: Form(
             key: formkey,
             child: Container(
@@ -68,10 +73,13 @@ class Login extends StatelessWidget {
                       height: 10,
                     ),
                     customtextfield(
+                      keybordtype: TextInputType.emailAddress,
                       style: TextStyle(color: Colors.white),
                       val: (value) {
                         if (value.toString().isEmpty) {
                           return 'invalid';
+                        } else if (!value.toString().contains('@')) {
+                          return 'invalid email';
                         }
                         return null;
                       },
@@ -80,7 +88,7 @@ class Login extends StatelessWidget {
                         color: Colors.white,
                       ),
                       label: Text(
-                        "user name",
+                        "Email",
                         style: TextStyle(color: Colors.white),
                       ),
                       controller: usernameController,
@@ -130,46 +138,54 @@ class Login extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            ValueListenableBuilder(
-                              valueListenable: check,
-                              builder: (context, value, child) {
-                                return Checkbox(
-                                  value: check.value,
-                                  onChanged: (value) {
-                                    check.value = !check.value;
-                                    print(check.value);
-                                  },
-                                );
-                              },
-                            ),
-                            Text(
-                              "remember me?",
-                              style: TextStyle(color: Colors.amber),
-                            )
-                          ],
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Row(
+                    //       children: [
+                    //         ValueListenableBuilder(
+                    //           valueListenable: check,
+                    //           builder: (context, value, child) {
+                    //             return Checkbox(
+                    //               value: check.value,
+                    //               onChanged: (value) {
+                    //                 check.value = !check.value;
+                    //                 print(check.value);
+                    //               },
+                    //             );
+                    //           },
+                    //         ),
+                    //         // Text(
+                    //         //   "remember me?",
+                    //         //   style: TextStyle(color: Colors.amber),
+                    //         // )
+                    //       ],
+                    //     ),
+
+                    //   ],
+                    // ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                        onPressed: () {
+                          navigation(context, Forgotpassword());
+                        },
+                        child: Text(
+                          "forgot password?",
+                          style: TextStyle(color: Colors.white),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "forgot password",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                     Container(
                       height: 50,
                       width: 130,
                       child: ElevatedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (formkey.currentState!.validate()) {
                             print(usernameController.text);
                             print(passwordController.text);
+                            await loginUser(usernameController.text,
+                                passwordController.text, context);
                           }
                         },
                         child: Text("Login"),

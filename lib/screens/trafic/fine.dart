@@ -3,10 +3,13 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:smart_license/customwidget/textfield.dart';
+import 'package:smart_license/utils/api/trafic/semdfineApi.dart';
 
 class Fine extends StatefulWidget {
-  Fine({Key? key}) : super(key: key);
+  Fine({Key? key, this.vnumber}) : super(key: key);
+  final vnumber;
 
   @override
   _FineState createState() => _FineState();
@@ -17,14 +20,12 @@ class _FineState extends State<Fine> {
   TextEditingController fineController = TextEditingController();
   File? _pickedImage;
 
-  Future<void> _pickImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.image,
-    );
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedFile = await ImagePicker().pickImage(source: source);
 
-    if (result != null) {
+    if (pickedFile != null) {
       setState(() {
-        _pickedImage = File(result.files.single.path!);
+        _pickedImage = File(pickedFile.path);
       });
     }
   }
@@ -65,17 +66,8 @@ class _FineState extends State<Fine> {
                         ],
                       ),
                     ),
-                    // Text(
-                    //   "License.",
-                    //   style: TextStyle(
-                    //     color: Colors.red,
-                    //     fontSize: 20,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    // ),
                   ],
                 ),
-
                 SizedBox(
                   height: 20,
                 ),
@@ -100,20 +92,32 @@ class _FineState extends State<Fine> {
                 SizedBox(
                   height: 20,
                 ),
-                SizedBox(
-                  height: 20,
-                ),
                 // Add Image Picker Button
-                ElevatedButton(
-                  onPressed: _pickImage,
-                  child: Text('Pick Image'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => _pickImage(ImageSource.camera),
+                      child: Text('Take Photo'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () => _pickImage(ImageSource.gallery),
+                      child: Text('Pick from Gallery'),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     // Handle sending data
+                    Map<String, dynamic> data = {
+                      'offence': offenceController.text,
+                      'fineamount': fineController.text,
+                      'vehiclenumber': widget.vnumber,
+                    };
+                    await sendFineApi(data, _pickedImage, context);
                   },
                   child: Text('Send'),
                 ),

@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_license/utils/api/loginApi.dart';
 
 class ShowLisence extends StatefulWidget {
-  const ShowLisence({super.key});
-
+  const ShowLisence({super.key, this.liseccsdata});
+  final liseccsdata;
   @override
   State<ShowLisence> createState() => _ShowLisenceState();
 }
@@ -41,11 +42,15 @@ class _ShowLisenceState extends State<ShowLisence> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 50,
             ),
             Container(
               decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black45, spreadRadius: 3, blurRadius: 4)
+                  ],
+                  color: Color.fromARGB(255, 225, 248, 233),
                   border: Border.all(color: Colors.red.withOpacity(0.5)),
                   borderRadius: BorderRadius.circular(7)),
               child: Padding(
@@ -75,16 +80,25 @@ class _ShowLisenceState extends State<ShowLisence> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Name:'),
-                            Text('License No:'),
-                            Text('Authorization To Drive:'),
-                            Text('Date of Issue:'),
-                            Text('DOB:'),
-                            Text('S/D/W:'),
-                            Text('Blood Group:'),
-                            Text('Date of Expiry:'),
-                            Text('Perment Address:'),
-                            Text('Pesent Adress:'),
+                            Text(widget.liseccsdata[0]['Name']),
+                            Text(
+                                widget.liseccsdata[0]['Licence_No'].toString()),
+                            Text(widget.liseccsdata[0]['Authorization_To_Drive']
+                                .toString()),
+                            Text(widget.liseccsdata[0]['Date_of_Issue']
+                                .toString()
+                                .substring(0, 16)),
+                            Text(widget.liseccsdata[0]['DOB']
+                                .toString()
+                                .substring(0, 16)),
+                            Text(widget.liseccsdata[0]['relation']),
+                            Text(widget.liseccsdata[0]['Blood_Group']
+                                .toString()),
+                            Text(widget.liseccsdata[0]['validity']
+                                .toString()
+                                .substring(0, 16)),
+                            Text(widget.liseccsdata[0]['Permanent_Address']),
+                            Text(widget.liseccsdata[0]['Present_Address']),
                           ],
                         )
                       ],
@@ -104,6 +118,10 @@ class _ShowLisenceState extends State<ShowLisence> {
                                   color: const Color.fromARGB(255, 7, 7, 7)
                                       .withOpacity(0.5)),
                               borderRadius: BorderRadius.circular(7)),
+                          child: Image.network(
+                            '$baseUrl/static/images/${widget.liseccsdata[0]['photo']}',
+                            fit: BoxFit.fill,
+                          ),
                         ),
                         Container(
                           height: 150,
@@ -114,6 +132,10 @@ class _ShowLisenceState extends State<ShowLisence> {
                                   color: const Color.fromARGB(255, 7, 7, 7)
                                       .withOpacity(0.5)),
                               borderRadius: BorderRadius.circular(7)),
+                          child: Image.network(
+                            '$baseUrl/static/QR/${widget.liseccsdata[0]['qr']}',
+                            fit: BoxFit.fill,
+                          ),
                         )
                       ],
                     ),

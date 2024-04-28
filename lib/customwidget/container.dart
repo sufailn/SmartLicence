@@ -9,7 +9,8 @@ class CustomeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.blue,
+          border: Border.all(color: Colors.black),
+          color: Color.fromARGB(165, 255, 255, 255),
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -19,8 +20,8 @@ class CustomeContainer extends StatelessWidget {
               blurRadius: 5,
             )
           ]),
-      height: 100,
-      width: 100,
+      height: 150,
+      width: 150,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

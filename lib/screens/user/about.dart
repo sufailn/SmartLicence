@@ -48,7 +48,7 @@ class AboutScreen extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'About Us',
+                  'About Smart License',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -56,14 +56,14 @@ class AboutScreen extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Welcome to our app!',
+                  "Welcome to Smart License, your ultimate solution for managing licenses smartly and efficiently,At Smart License, we understand the challenges individuals and businesses face in managing licenses, from driver's licenses to professional certifications. Thats why we've developed a comprehensive app designed to streamline the entire licensing process.",
                   style: TextStyle(
                     fontSize: 18,
                   ),
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'This app is designed to help you...',
+                  "",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,

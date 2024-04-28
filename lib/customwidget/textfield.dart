@@ -12,6 +12,7 @@ class customtextfield extends StatelessWidget {
       this.obsecure,
       this.suffix,
       this.keybordtype,
+      this.readonly,
       this.style});
   final label;
   final prefix;
@@ -21,10 +22,12 @@ class customtextfield extends StatelessWidget {
   final suffix;
   final keybordtype;
   final style;
+  final readonly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readonly ?? false,
       style: style,
       keyboardType: keybordtype,
       obscureText: obsecure ?? false,

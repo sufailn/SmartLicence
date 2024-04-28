@@ -5,6 +5,7 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:smart_license/customwidget/textfield.dart';
 import 'package:smart_license/auth/login.dart';
 import 'package:smart_license/auth/sighup.dart';
+import 'package:smart_license/utils/api/registerApi.dart';
 
 class Signup extends StatefulWidget {
   Signup({Key? key}) : super(key: key);
@@ -14,23 +15,23 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  TextEditingController usernameController = TextEditingController();
+  // TextEditingController usernameController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
 
   TextEditingController RpasswordController = TextEditingController();
 
-  TextEditingController FNameController = TextEditingController();
-
-  TextEditingController LNameController = TextEditingController();
+  TextEditingController NameController = TextEditingController();
 
   TextEditingController AddressController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
 
   TextEditingController EmailController = TextEditingController();
 
   TextEditingController PhoneController = TextEditingController();
 
   TextEditingController Dobcontroller = TextEditingController();
+  TextEditingController adhaarcontroller = TextEditingController();
 
   final ValueNotifier<bool> obsecure = ValueNotifier(true);
 
@@ -42,20 +43,13 @@ class _SignupState extends State<Signup> {
 
   int? _radioVal;
 
+  List<Map<String, dynamic>> regDatas = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   iconTheme: IconThemeData(color: Color.fromARGB(255, 5, 13, 251)),
-      //   backgroundColor: const Color.fromARGB(31, 248, 20, 20),
-      //   title: Text("Smart license"),
-      //   leading: Icon(Icons.car_rental_outlined),
-      //   actions: [
-      //     Icon(Icons.notification_important_sharp),
-      //     SizedBox(width: 10)
-      //   ],
-      // ),
       body: Container(
+        height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/loginbg.png'),
@@ -68,7 +62,7 @@ class _SignupState extends State<Signup> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 100, left: 40, right: 40, bottom: 30),
+                    top: 100, left: 30, right: 30, bottom: 30),
                 child: Form(
                   key: formkey,
                   child: Container(
@@ -98,6 +92,38 @@ class _SignupState extends State<Signup> {
                             height: 10,
                           ),
                           customtextfield(
+                            keybordtype: TextInputType.number,
+                            suffix: Container(
+                              height: 20,
+                              width: 90,
+                              child: TextButton(
+                                child: Text(
+                                  'Browse',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                onPressed: () async {
+                                  regDatas = await getUsedatas(
+                                      adhaarcontroller.text, context);
+
+                                  genderController.text = regDatas[0]['Gender'];
+
+                                  NameController.text =
+                                      regDatas[0]['Name_of_Regd_Owner'];
+                                  AddressController.text =
+                                      regDatas[0]['Address'];
+
+                                  EmailController.text = regDatas[0]['email'];
+
+                                  PhoneController.text =
+                                      regDatas[0]['Phone'].toString();
+
+                                  Dobcontroller.text =
+                                      regDatas[0]['DOB'].toString();
+                                },
+                              ),
+                            ),
                             style: TextStyle(color: Colors.white),
                             val: (value) {
                               if (value.toString().isEmpty) {
@@ -106,14 +132,14 @@ class _SignupState extends State<Signup> {
                               return null;
                             },
                             prefix: Icon(
-                              Icons.person_2,
+                              Icons.adobe_sharp,
                               color: Colors.white,
                             ),
                             label: Text(
-                              "First Name",
+                              "Adhaar number",
                               style: TextStyle(color: Colors.white),
                             ),
-                            controller: FNameController,
+                            controller: adhaarcontroller,
                           ),
                           SizedBox(
                             height: 5,
@@ -127,75 +153,96 @@ class _SignupState extends State<Signup> {
                               return null;
                             },
                             prefix: Icon(
-                              Icons.person_2_outlined,
+                              Icons.person_2,
                               color: Colors.white,
                             ),
                             label: Text(
-                              "Last Name",
+                              "Name",
                               style: TextStyle(color: Colors.white),
                             ),
-                            controller: LNameController,
+                            controller: NameController,
+                            readonly: true,
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              style: TextStyle(color: Colors.white),
-                              "Gender:",
+
+                          customtextfield(
+                            style: TextStyle(color: Colors.white),
+                            val: (value) {
+                              if (value.toString().isEmpty) {
+                                return 'invalid';
+                              }
+                              return null;
+                            },
+                            prefix: Icon(
+                              Icons.person_2,
+                              color: Colors.white,
                             ),
+                            label: Text(
+                              "Gender",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            controller: genderController,
+                            readonly: true,
                           ),
-                          Row(
-                            children: [
-                              Radio(
-                                value: 0,
-                                groupValue: _radioVal,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    setState(() {
-                                      _radioVal = value;
-                                      print(_radioVal);
-                                    });
-                                  }
-                                },
-                              ),
-                              const Text(
-                                style: TextStyle(color: Colors.white),
-                                'Male ',
-                              ),
-                              Radio(
-                                value: 1,
-                                groupValue: _radioVal,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    setState(() {
-                                      _radioVal = value;
-                                      print(_radioVal);
-                                    });
-                                  }
-                                },
-                              ),
-                              const Text(
-                                  style: TextStyle(color: Colors.white),
-                                  'Female '),
-                              Radio(
-                                value: 2,
-                                groupValue: _radioVal,
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    setState(() {
-                                      _radioVal = value;
-                                      print(_radioVal);
-                                    });
-                                  }
-                                },
-                              ),
-                              const Text(
-                                  style: TextStyle(color: Colors.white),
-                                  'Others '),
-                            ],
-                          ),
+                          // Align(
+                          //   alignment: Alignment.bottomLeft,
+                          //   child: Text(
+                          //     style: TextStyle(color: Colors.white),
+                          //     "Gender:",
+                          //   ),
+                          // ),
+                          // Row(
+                          //   children: [
+                          //     Radio(
+                          //       value: 0,
+                          //       groupValue: _radioVal,
+                          //       onChanged: (value) {
+                          //         if (value != null) {
+                          //           setState(() {
+                          //             _radioVal = value;
+                          //             print(_radioVal);
+                          //           });
+                          //         }
+                          //       },
+                          //     ),
+                          //     const Text(
+                          //       style: TextStyle(color: Colors.white),
+                          //       'Male ',
+                          //     ),
+                          //     Radio(
+                          //       value: 1,
+                          //       groupValue: _radioVal,
+                          //       onChanged: (value) {
+                          //         if (value != null) {
+                          //           setState(() {
+                          //             _radioVal = value;
+                          //             print(_radioVal);
+                          //           });
+                          //         }
+                          //       },
+                          //     ),
+                          //     const Text(
+                          //         style: TextStyle(color: Colors.white),
+                          //         'Female '),
+                          //     Radio(
+                          //       value: 2,
+                          //       groupValue: _radioVal,
+                          //       onChanged: (value) {
+                          //         if (value != null) {
+                          //           setState(() {
+                          //             _radioVal = value;
+                          //             print(_radioVal);
+                          //           });
+                          //         }
+                          //       },
+                          //     ),
+                          //     const Text(
+                          //         style: TextStyle(color: Colors.white),
+                          //         'Others '),
+                          //   ],
+                          // ),
                           customtextfield(
                             style: TextStyle(color: Colors.white),
                             keybordtype: TextInputType.emailAddress,
@@ -205,26 +252,11 @@ class _SignupState extends State<Signup> {
                               }
                               return null;
                             },
-                            prefix: IconButton(
-                                onPressed: () async {
-                                  DateTime? newDateTime =
-                                      await showRoundedDatePicker(
-                                    context: context,
-                                    initialDate: DateTime.now(),
-                                    firstDate:
-                                        DateTime(DateTime.now().year - 100),
-                                    lastDate: DateTime(DateTime.now().year + 1),
-                                    borderRadius: 16,
-                                    theme:
-                                        ThemeData(primarySwatch: Colors.pink),
-                                  );
-                                  Dobcontroller.text =
-                                      newDateTime.toString().substring(0, 10);
-                                },
-                                icon: Icon(
-                                  Icons.calendar_month_rounded,
-                                  color: Colors.white,
-                                )),
+                            readonly: true,
+                            prefix: Icon(
+                              Icons.calendar_month_rounded,
+                              color: Colors.white,
+                            ),
                             label: Text("DOB",
                                 style: TextStyle(color: Colors.white)),
                             controller: Dobcontroller,
@@ -247,11 +279,13 @@ class _SignupState extends State<Signup> {
                               style: TextStyle(color: Colors.white),
                             ),
                             controller: AddressController,
+                            readonly: true,
                           ),
                           SizedBox(
                             height: 5,
                           ),
                           customtextfield(
+                            readonly: true,
                             style: TextStyle(color: Colors.white),
                             keybordtype: TextInputType.phone,
                             val: (value) {
@@ -270,6 +304,7 @@ class _SignupState extends State<Signup> {
                             height: 5,
                           ),
                           customtextfield(
+                            readonly: true,
                             style: TextStyle(color: Colors.white),
                             keybordtype: TextInputType.emailAddress,
                             val: (value) {
@@ -284,9 +319,9 @@ class _SignupState extends State<Signup> {
                                 style: TextStyle(color: Colors.white)),
                             controller: EmailController,
                           ),
-                          SizedBox(
-                            height: 5,
-                          ),
+                          // SizedBox(
+                          //   height: 5,
+                          // ),
                           // customtextfield(
                           //   style: TextStyle(color: Colors.white),
                           //   val: (value) {
@@ -312,6 +347,11 @@ class _SignupState extends State<Signup> {
                                 val: (value) {
                                   if (value.toString().isEmpty) {
                                     return 'invalid';
+                                  } else if (value.toString().length < 6) {
+                                    return 'password must contain at least 6 characters';
+                                  } else if (!RegExp(r'^(?=.*[0-9])(?=.*[A-Z])')
+                                      .hasMatch(value.toString())) {
+                                    return 'password must contain at least one number and one capital letter';
                                   }
                                   return null;
                                 },
@@ -366,44 +406,46 @@ class _SignupState extends State<Signup> {
                               );
                             },
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  ValueListenableBuilder(
-                                    valueListenable: check,
-                                    builder: (context, value, child) {
-                                      return Checkbox(
-                                        value: check.value,
-                                        onChanged: (value) {
-                                          check.value = !check.value;
-                                          print(check.value);
-                                        },
-                                      );
-                                    },
-                                  ),
-                                  Text(
-                                    "remember me?",
-                                    style: TextStyle(color: Colors.amber),
-                                  ),
-                                ],
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text("forgot password",
-                                    style: TextStyle(color: Colors.white)),
-                              ),
-                            ],
-                          ),
+                          // Row(
+                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //   children: [
+                          //     Row(
+                          //       children: [
+                          //         ValueListenableBuilder(
+                          //           valueListenable: check,
+                          //           builder: (context, value, child) {
+                          //             return Checkbox(
+                          //               value: check.value,
+                          //               onChanged: (value) {
+                          //                 check.value = !check.value;
+                          //                 print(check.value);
+                          //               },
+                          //             );
+                          //           },
+                          //         ),
+                          //         Text(
+                          //           "remember me?",
+                          //           style: TextStyle(color: Colors.amber),
+                          //         ),
+                          //       ],
+                          //     ),
+
+                          //   ],
+                          // ),
                           Container(
                             height: 50,
                             width: 130,
                             child: ElevatedButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 if (formkey.currentState!.validate()) {
-                                  print(usernameController.text);
+                                  // print(usernameController.text);
                                   print(passwordController.text);
+
+                                  await registerUser(
+                                      EmailController.text,
+                                      passwordController.text,
+                                      adhaarcontroller.text,
+                                      context);
                                 }
                               },
                               child: Text("Sign up"),
