@@ -4,6 +4,7 @@ import 'package:smart_license/main.dart';
 import 'package:smart_license/screens/trafic/traffichome.dart';
 import 'package:smart_license/utils/api/loginApi.dart';
 import 'package:smart_license/utils/common/snackbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ViewAccessed extends StatelessWidget {
   const ViewAccessed({super.key, this.accessed});
@@ -71,8 +72,30 @@ class ViewAccessed extends StatelessWidget {
                           '$baseUrl/static/images/${accessed[index]['photo']}'),
                     ),
                     title: Text('Lisence No: ${accessed[index]['Licence_No']}'),
-                    subtitle: Text(
-                        'Name: ${accessed[index]['Name']} \nPhone: ${accessed[index]['Phone']} \nAlcohol: ${accessed[index]['alcohol']}   \nSpeed: ${accessed[index]['speed']}  '),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            'Name: ${accessed[index]['Name']}  \nAlcohol: ${accessed[index]['alcohol']}   \nSpeed: ${accessed[index]['speed']}  '),
+                        Row(
+                          children: [
+                            Text('Phone: '),
+                            TextButton(
+                              onPressed: () {
+                                _launchDialer(accessed[index]['Phone']);
+                              },
+                              child: Text(accessed[index]['Phone'].toString()),
+                            )
+                          ],
+                        ),
+                        TextButton(
+                            onPressed: () {
+                              _launchGoogleMaps(accessed[index]['latitude'],
+                                  accessed[index]['longitude']);
+                            },
+                            child: Text('ViewMap'))
+                      ],
+                    ),
                     trailing: Text('Time: ${accessed[index]['time']}'),
                   ),
                 );
@@ -83,5 +106,26 @@ class ViewAccessed extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _launchDialer(numbr) async {
+    // const phoneNumber = '1234567890'; // Replace with your desired phone number
+    final url = 'tel:$numbr';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchGoogleMaps(lati, log) async {
+    // final latitude = 37.7749; // Replace with your latitude
+    // final longitude = -122.4194; // Replace with your longitude
+    final url = 'https://www.google.com/maps?q=$lati,$log';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

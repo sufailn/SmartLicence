@@ -9,7 +9,7 @@ import 'package:smart_license/screens/user/home.dart';
 import 'package:smart_license/utils/api/profileApi.dart';
 import 'package:smart_license/utils/common/snackbar.dart';
 
-String baseUrl = 'http://192.168.1.125:5000';
+String baseUrl = 'http://172.20.10.6:5000';
 String loginId = '';
 String type = '';
 String adhar = '';
