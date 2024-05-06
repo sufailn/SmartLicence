@@ -11,9 +11,9 @@ class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
   TextEditingController usernameController =
-      TextEditingController(text: 'SUFAILAHMD990@GMAIL.COM');
+      TextEditingController(text: 'sufailahmd990@gmail.COM');
   TextEditingController passwordController =
-      TextEditingController(text: 'Suf@123');
+      TextEditingController(text: 'Nisha123');
 
   final ValueNotifier<bool> obsecure = ValueNotifier(true);
   var formkey = GlobalKey<FormState>();

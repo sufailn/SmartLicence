@@ -69,6 +69,7 @@ class _searchlicenseState extends State<searchlicense> {
                     borderRadius: BorderRadius.circular(7)),
                 width: 250,
                 child: CupertinoSearchTextField(
+                  placeholder: 'Enter License No',
                   controller: searchcontroll,
                 ),
               ),

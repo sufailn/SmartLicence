@@ -72,6 +72,7 @@ class _SearchvechicleState extends State<Searchvechicle> {
                     borderRadius: BorderRadius.circular(7)),
                 width: 250,
                 child: CupertinoSearchTextField(
+                  placeholder: 'KL10AC1008',
                   onChanged: (value) => value.toUpperCase(),
                   controller: searchcontroll,
                 ),

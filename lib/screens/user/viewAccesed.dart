@@ -72,7 +72,7 @@ class ViewAccessed extends StatelessWidget {
                     ),
                     title: Text('Lisence No: ${accessed[index]['Licence_No']}'),
                     subtitle: Text(
-                        'Name: ${accessed[index]['Name']} \nPhone: ${accessed[index]['Phone']} '),
+                        'Name: ${accessed[index]['Name']} \nPhone: ${accessed[index]['Phone']} \nAlcohol: ${accessed[index]['alcohol']}   \nSpeed: ${accessed[index]['speed']}  '),
                     trailing: Text('Time: ${accessed[index]['time']}'),
                   ),
                 );

@@ -98,7 +98,7 @@ class Homescreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 390),
+            SizedBox(height: 300),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

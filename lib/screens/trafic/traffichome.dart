@@ -50,7 +50,9 @@ class TrafficHomeScreen extends StatelessWidget {
                   Icons.supervised_user_circle_outlined,
                   color: Colors.white,
                 ),
-                onTap: () {},
+                onTap: () {
+                  navigation(context, AboutScreen());
+                },
                 title: Text(
                   'About',
                   style: TextStyle(

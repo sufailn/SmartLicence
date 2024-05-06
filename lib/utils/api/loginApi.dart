@@ -9,7 +9,7 @@ import 'package:smart_license/screens/user/home.dart';
 import 'package:smart_license/utils/api/profileApi.dart';
 import 'package:smart_license/utils/common/snackbar.dart';
 
-String baseUrl = 'http://192.168.19.36:5000';
+String baseUrl = 'http://192.168.1.125:5000';
 String loginId = '';
 String type = '';
 String adhar = '';
@@ -31,21 +31,21 @@ Future<void> loginUser(String name, String password, context) async {
     Map data = response.data;
 
     print(profileDatas);
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('userid', data['loginid'].toString());
-    prefs.setString('type', data['type']);
-    prefs.setString('adhar', data['ano'] ?? "");
-    adhar = await prefs.getString('adhar') ?? '';
-
-    loginId = await prefs.getString('userid') ?? '';
-    type = await prefs.getString('type') ?? '';
-
-    profileDatas = await getProfile();
-
-    print(type);
 
     if (response.statusCode == 200) {
       if (data['task'] == 'success') {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('userid', data['loginid'].toString());
+        prefs.setString('type', data['type']);
+        prefs.setString('adhar', data['ano'] ?? "");
+        adhar = await prefs.getString('adhar') ?? '';
+
+        loginId = await prefs.getString('userid') ?? '';
+        type = await prefs.getString('type') ?? '';
+
+        profileDatas = await getProfile();
+
+        print(type);
         print('gggg');
         showMySnackBar(context, 'Login Success', Colors.green);
         if (type == 'traffic') {
@@ -62,7 +62,8 @@ Future<void> loginUser(String name, String password, context) async {
               ));
         }
       } else {
-        showMySnackBar(context, data['reason'], Colors.red);
+        showMySnackBar(
+            context, data['reason'] ?? 'failed to login', Colors.red);
       }
       // Successful login
       // print('Login Successful');

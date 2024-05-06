@@ -60,7 +60,7 @@ class _ShowLisenceState extends State<ShowLisence> {
                     Row(
                       children: [
                         Container(
-                          width: 200,
+                          width: 150,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
