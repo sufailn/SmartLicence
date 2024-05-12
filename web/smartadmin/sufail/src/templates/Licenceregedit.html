@@ -1,0 +1,149 @@
+{%extends 'Admin.html'%}
+{%block body%}
+
+
+      
+        
+    <form class="form6 mt-3" method="post" action="/updatelicence" enctype="multipart/form-data">
+      <p class="title text-white">Register </p>
+      
+      <div class="flex6">
+
+          <label style="width: 100%;">Name
+              <input class="input" type="text" name="textfield"  value="{{values[1]}}"placeholder="" required pattern="[A-Z a-z]{3,25}">
+          </label>
+          <label style="width: 100%;">Licence No
+              <input class="input" type="text" name="textfield2" value="{{ values[2] }}" placeholder="" required pattern="[A-Za-z0-9]{3,20}">
+          </label>
+          <label style="width: 100%;">Authoratization to drive
+            <input class="input" type="text" name="textfield3" value="{{values[3]}}" placeholder="" required pattern="[A-Za-z0-9 ]{3,50}">
+        </label>
+       
+          
+          
+      </div>
+      <div class="flex6">
+
+       
+        
+        <label style="width: 100%;">Phone No
+          <input class="input" type="text" value="{{values[4]}}" name="number" placeholder="" required pattern="[6789][0-9]{9}">
+      </label>
+      
+
+   
+
+      <label style="width: 100%;">Email
+        <input class="input" type="email" value="{{values[5] }}" name="email" placeholder="" required>
+    </label>
+   
+        
+        
+    </div>
+     
+
+  
+      
+      
+      <div class="flex6">
+         
+  
+       
+        <label style="width: 100%;">Issue Date
+            <input class="input" type="date" value="{{values[6]}}" name="date" placeholder="" required>
+        </label>
+             
+        <label style="width: 100%;">Validity
+            <input class="input" type="date"  name="date2"  value="{{values [7] }}" placeholder="" required>
+        </label>
+     
+
+      
+
+        <label style="width: 100%;">Blood Group
+          <input class="input" type="text" name="textfield5" value="{{values[8] }}" placeholder="" required>
+      </label>
+
+
+
+        
+       
+    </div>
+
+   <div class="flex6">
+         <label style="width: 100%;">S/0 D/o W/O
+          <input class="input" type="text" name="relation" value="{{values[9]}}" placeholder="" required>
+      </label>
+            <label style="width: 100%;">DOB
+          <input class="input" type="date" value="{{values[10]}}" name="date3" placeholder="" required>
+      </label>
+
+
+
+   </div>
+     
+        
+      <div class="flex6">
+          <label for="">Gender</label>
+      <input class="input" type="radio" id="radio"  name="gender" value="Male" {%if values[11]=="Male"%}checked{%endif%}>
+<label for="male">Male</label><br>
+<input class="input" type="radio" id="radio"  name="gender" value="Female" {%if values[11]=="Female"%}checked{%endif%}>
+<label for="female">Female</label><br>
+<input class="input" type="radio" id="radio"  name="gender" value="Others" {%if values[11]=="Others"%}checked{%endif%}>
+<label for="others">Others</label><br>
+
+  </div>
+
+      <div class="flex6">
+        <label style="width: 100%;">Permanent Address
+
+          <textarea class="input form-control" name="textarea4" placeholder="" id="exampleFormControlTextarea1" rows="3" required>{{values[12]}}</textarea>
+  </label>
+  <label class="text-white" style="width: 100%; "> Present Address
+
+      <textarea class="input form-control" name="textarea5"  placeholder="" id="exampleFormControlTextarea1" rows="3" required>{{values[13]}}</textarea>
+</label>
+
+          
+         
+        
+
+      </div> 
+
+    <div class="flex6">
+      <label class="text-white" style="margin-left: 10px;" for=""> <b>Image</b></label>
+        <img src="/static/images/{{values[14]}}" width="80" height="60" alt="">
+        <a href="/changeimage">change image</a>
+
+          
+
+        
+      </div> 
+
+
+
+
+
+
+
+
+
+  
+      <button  class="btn btn-success">Update</button>
+
+
+ 
+
+  </form>
+
+
+
+
+
+
+   
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{%endblock%}

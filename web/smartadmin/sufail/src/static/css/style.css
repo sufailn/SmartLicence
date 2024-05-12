@@ -1,0 +1,284 @@
+* {
+      box-sizing: border-box;
+    }
+    
+    body {
+      background-image: url('https://www.edriving.com/three60/wp-content/uploads/sites/2/2020/07/uk-licence-expiry-dates-iStock-1181654537.jpg');
+      /* height: auto; */
+      background-position:top;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    .nav button {
+      border: 0;
+      padding: 0;
+      background: transparent;
+      font-family: inherit;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .nav button a{
+      text-decoration: none;
+      color: #fff;
+      font-weight: bolder;
+    }
+    
+    .navigation-menu {
+      box-sizing: border-box;
+      min-width: 100%;
+      height: 60px;
+      margin: 0;
+      padding: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.5);
+      color: #f9f9f9;
+      font-family: "Cambria";
+    }
+
+    .navigation-menu__overlay {
+      position: fixed;
+      visibility: hidden;
+      opacity: 0;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      transition: 0.3s;
+    }
+    
+    body.open .navigation-menu__overlay {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    
+    .hamburger-menu {
+      position: absolute;
+      padding: 0;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      color: #fff;
+
+    }
+    
+    #close-icon {
+      display: none;
+    }
+    
+ 
+    .logo {
+      margin: 0;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 40px;
+      text-shadow: 5px 5px 5px rgba(0,0,0,0.8);
+
+    }
+    
+    .navigation-menu__labels {
+      position: fixed;
+      visibility: hidden;
+      z-index: 3;
+      top: 60px;
+      left: 0;
+      width: 50%;
+      height: auto;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+      align-items: flex-start;
+      background: rgba(0,0,0,0.5);
+      transition: translate 0.3s;
+      translate: -100% 0;
+      :hover {
+        color: #00c6ff;
+      }
+    }
+    
+    body.open .navigation-menu__labels {
+      translate: 0 0;
+      visibility: visible;
+    }
+    
+    .navigation-menu__labels > button {
+      color: #f9f9f9;
+      background: transparent;
+      padding: 0 8px;
+    }
+    
+    .navigation-menu__labels > button.active {
+      color: inherit;
+    }
+    
+    .main-body{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      padding-top: 200px;
+      flex-wrap: wrap;
+    }
+    .main-body a{
+      text-decoration: none;
+      color: #000000;
+      padding: 35px;
+      text-align: center;
+      background-color: rgba(255,255,255,0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      justify-content: center;
+      text-align: center;
+      width: 145px;
+    }
+    .main-body span{
+      font-weight: 800;
+      text-align: center;
+    }
+    .main-body a:hover{
+      background-color: rgba(255,255,255,0.9);
+    }
+
+    /* body contents */
+    .mainBody{
+      padding-top: 80px;
+    }
+
+    table{
+      margin: auto;
+      text-align: center;
+      width: 80%;
+      border-collapse: collapse;
+      font-size: 16px;
+      text-align: left;
+    }
+   
+   table th,
+   table td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+  table th {
+        background-color: #f2f2f2;
+    }
+    table tr{
+      background-color: rgba(255,255,255,0.5);
+    }
+    
+   table tbody tr:hover {
+        background-color: #f5f5f5;
+    }
+
+    table img{
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+    }
+
+    /* add new btn */
+    .float-btn{
+      position: fixed;
+      bottom: 35px;
+      right: 35px;
+      background: transparent;
+      border-radius: 10px;
+      background-color: #054a87;
+    }
+    .float-btn a{
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .float-btn:hover{
+      background-color: #1276ce;
+    }
+
+    /* edit and delete btn */
+    .edit{
+      text-decoration: none;
+      background-color: #fff;
+      color: #1276ce;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .delete{
+      text-decoration: none;
+      background-color: #fff;
+      color: #cb0707;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .edit:hover{
+      color: #ffffff;
+      background-color: #1c6ae9;
+    }
+    .delete:hover{
+      color: #ffffff;
+      background-color: #cb0707;
+    }
+
+    /* form */
+    form {
+      background-color: #fff;
+      padding:10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+      width: 450px;
+      text-align: center;
+      margin: auto;
+    }
+    
+    form h2 {
+      color: #212020;
+      margin-bottom: 20px;
+    }
+    
+    form label {
+      text-align: left;
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    form .input {
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 8px;
+    }
+    form .input:focus{
+      outline: none;
+    }
+    form .submit{
+      padding: 10px;
+    }
+    
+    form .submit {
+      background-color: #0b6bca;
+      color: #fff;
+      padding: 10px;
+      width: 30%;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    form .submit:hover{
+      background-color: #012a52;
+    }
+    

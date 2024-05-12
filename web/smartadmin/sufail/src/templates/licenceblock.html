@@ -1,0 +1,126 @@
+{%extends 'Admin.html'%}
+{%block body%}
+
+
+      {%for i in value%}
+
+      <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="list-group list-group bg-info">
+                    <li class="list-group-item d-flex justify-content-between align-items-start bg-success">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Name</div>
+                     {{i[1]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Licence Number</div>
+                     {{i[2]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Authorization to drive</div>
+                     {{i[3]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Phone</div>
+                     {{i[4]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Aadhar Number</div>
+                     {{i[17]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start ">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Email</div>
+                         {{i[5]}}
+                      </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Issue Date</div>
+                         {{i[6]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Validity</div>
+                           {{i[7]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Blood Group</div>
+                         {{i[8]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">S/D/W of:</div>
+                          {{i[9]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">D.O.B</div>
+                           {{i[10]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Gender</div>
+                           {{i[11]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Permanent Adress</div>
+                           {{i[12]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Present Address</div>
+                           {{i[13]}}
+                        </div>
+                      </li>
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Image</div>
+                          <img width="200px" height="200px" src="static/images/{{ i[14] }}" alt="">
+                        </div>
+                      </li>
+                     
+                     
+                      <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Action</div>
+                            {%if i[16]=='pending'%}
+                            <a href="/blocklicences?id={{i[0]}}" class="btn btn-primary">Block</a>
+                            <a href="/unblocklicences?id={{i[0]}}" class="btn btn-danger">Unblock</a>{%endif%}
+
+                             {%if i[16]=='Unblock'%}<a href="/blocklicences?id={{i[0]}}" class="btn btn-primary">Block</a>{%endif%}
+                             {%if i[16]=='blocked'%} <a href="/unblocklicences?id={{i[0]}}" class="btn btn-danger">Unblock</a>
+                            {%endif%}
+                        </div>
+                      </li>
+                  </ol>
+                
+            </div>
+        </div>
+      </div>
+
+      {%endfor%}
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{%endblock%}

@@ -1,0 +1,287 @@
+.admin{
+    background-image: url('https://wallpaperbat.com/img/565420-cityscapes-cars-traffic-nightlights-underpass-wallpaper-2560x1600-9167.jpg');
+    background-size: cover;
+}
+
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 1200px;
+    padding: 40px;
+    border-radius: 20px;
+    position: relative;
+    /* background-color: #1a1a1a; */
+    color: #fff;
+    /* border: 1px solid #333; */
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: auto;
+  }
+  
+  .title {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    color: #0d0d0e;
+  }
+  
+ 
+  
+ 
+  
+  
+  
+  .flex {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .form label {
+    position: relative;
+  }
+  
+  .form label .input {
+    background-color: #050505;
+    color: #fff;
+    width: 100%;
+    padding: 3px 05px 05px 10px;
+    outline: 0;
+    border: 1px solid rgba(105, 105, 105, 0.397);
+    border-radius: 10px;
+  }
+  
+  .form label .input + span {
+    /* color: rgba(255, 255, 255, 0.5); */
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    font-size: 0.9em;
+    cursor: text;
+    transition: 0.3s ease;
+    color: #fff;
+
+  }
+  
+  .form label .input:placeholder-shown + span {
+    top: 12.5px;
+    font-size: 0.9em;
+    color: white;
+  }
+  
+  .form label .input:focus + span,
+  .form label .input:valid + span {
+    color: #0a0a0a;
+    top: 0px;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  
+  .input {
+    font-size: medium;
+  }
+  .file{
+    font-size: small;
+  }
+  
+  /* .submit {
+    border: none;
+    outline: none;
+    padding: 4px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    transform: .3s ease;
+    background-color: #121212;
+    width: 200px;
+    margin: auto;
+   
+  } */
+  .file{
+    border-radius: 10px;
+  }
+  
+  .submit:hover {
+    background-color: #09517596;
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.9);
+      opacity: 1;
+    }
+  
+    to {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+
+  @media screen and (max-width:576px){
+    .form{
+      margin-top: 50px;
+    }
+  }
+.district{
+  background-color: #050505;
+  color: #fff;
+  width: 100%;
+  padding: 5px 2px 2px 2px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+
+
+
+
+
+
+.form6 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 20px;
+  position: relative;
+  /* background-color: #1a1a1a; */
+  color: #fff;
+  /* border: 1px solid #333; */
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: auto;
+}
+
+.title {
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #0d0d0e;
+}
+
+
+
+
+
+
+
+.flex6 {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.form6 label {
+  position: relative;
+}
+
+.form6 label .input {
+  background-color: #050505;
+  color: #fff;
+  width: 100%;
+  padding: 3px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form6 label .input + span {
+  /* color: rgba(255, 255, 255, 0.5); */
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 0.9em;
+  cursor: text;
+  transition: 0.3s ease;
+  color: #fff;
+
+}
+
+.form6 label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+  color: white;
+}
+
+.form6 label .input:focus + span,
+.form6 label .input:valid + span {
+  color: #0a0a0a;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+.file{
+  font-size: small;
+}
+
+/* .submit {
+  border: none;
+  outline: none;
+  padding: 4px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #121212;
+  width: 200px;
+  margin: auto;
+ 
+} */
+.file{
+  border-radius: 10px;
+}
+
+.submit:hover {
+  background-color: #09517596;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+
+@media screen and (max-width:576px){
+  .form{
+    margin-top: 50px;
+  }
+}
+.district{
+background-color: #050505;
+color: #fff;
+width: 100%;
+padding: 5px 2px 2px 2px;
+outline: 0;
+border: 1px solid rgba(105, 105, 105, 0.397);
+border-radius: 10px;
+}
+
+a:hover{
+background-color:rgba(0,0,0,0.7)
+}
+
+

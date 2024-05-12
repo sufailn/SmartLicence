@@ -1,0 +1,175 @@
+{%extends 'Admin.html'%}
+{%block body%}
+
+
+        
+    <form class="form mt-3" enctype="multipart/form-data" method="post"action="/updateveh">
+        <p class="title text-white">Register </p>
+        
+        <div class="flex">
+
+            <label style="width: 100%;">Registration Number
+                <input class="input" type="text" placeholder="" value="{{values[1]}}" name="registration_number" required="">
+            </label>
+            <label style="width: 100%;">Makers Nmae
+                <input class="input" type="text" name="makers_name" value="{{values[4]}}" placeholder="" required="">
+            </label>
+            <label style="width: 100%;">Owner
+                <input class="input" type="text" name="name_of_owner" value="{{values[5]}}" placeholder="" required="">
+            </label>
+            
+            
+        </div>
+       
+
+        <div class="flex">
+            <label style="width: 100%;">description
+
+                <textarea class="input form-control"  name="brief_description" placeholder="" id="exampleFormControlTextarea1" rows="3">{{values[2]}}</textarea>
+        </label>
+        <label class="text-white" style="width: 100%; ">Address
+
+            <textarea class="input form-control" name="address" placeholder="" id="exampleFormControlTextarea1" rows="3">{{values[3]}}</textarea>
+    </label>
+    <label class="text-white" style="width: 100%; "> Temporary Address
+
+        <textarea class="input form-control" name="temporary_address" placeholder="" id="exampleFormControlTextarea1" rows="3">{{values[7]}}</textarea>
+</label>
+           
+
+          
+        </div> 
+        <div class="flex">
+           
+
+          
+        </div> 
+        
+        <div class="flex">
+           
+    
+            <label style="width: 100%;">S/0 D/o W/O
+                <input class="input" type="text" name="relationship" value="{{values[6]}}" placeholder="" required="">
+            </label>
+
+           
+
+              <label style="width: 100%;">Email
+                <input class="input" type="email" name="Email"value="{{values[24]}}" placeholder="" required="">
+            </label>
+            <label style="width: 100%;">Class of Vechicle
+                <input class="input" type="text" value="{{values[8]}}" name="vehicle_class" placeholder="" required="">
+            </label>
+                 
+            <label style="width: 100%;">Makers classification
+                <input class="input" type="text" name="makers_classification" value="{{values[9]}}" required="">
+            </label>
+         
+
+          
+
+           
+
+            
+           
+        </div> 
+       
+          
+        <div class="flex">
+            
+          
+            <label style="width: 100%;">Type of Body
+                <input class="input" type="text" value="{{values[10]}}" name="body_type" placeholder="" required="">
+            </label>
+            <label style="width: 100%;">Chasis number
+                <input class="input" type="text" name="chassis_number" value="{{values[11]}}" placeholder="" required="">
+            </label>
+                 
+      <label style="width: 100%;">Seating Capacity
+        <input class="input" type="text" name="seating_capacity" value="{{values[20]}}" placeholder="" required="">
+    </label>  
+    <label style="width: 100%;">Tax License No
+        <input class="input" type="text" name="tax_license_number" value="{{values[21]}}" placeholder="" required="">
+    </label>  
+           
+        </div> 
+        <div class="flex">
+            
+           
+            <label style="width: 100%;">Engine number
+                <input class="input" type="text" placeholder="" name="engine_number"  value="{{values[12]}}" required="">
+            </label>
+                 <select class="district" id="fuel" name="fuel">
+    <option {% if values[13]=="petrol" %} selected {% endif %}>Petrol</option>
+    <option {% if values[13]=="Diesel" %} selected {% endif %}>Diesel</option>
+    <option {% if values[13]=="electric" %} selected {% endif %}>Electric</option>
+    <option {% if values[13]=="Hybrid" %} selected {% endif %}>Hybrid</option>
+</select>
+
+      <label style="width: 100%;">Color
+        <input class="input" type="text"name="colour"  placeholder=""  value="{{values[14]}}" required="">
+    </label>
+    <label style="width: 100%;">Month of Manufacture
+        <input class="input" type="date" name="manufacture_month" value="{{values[15]}}" placeholder="" required="">
+    </label>
+           
+        </div> 
+
+
+<div class="flex">
+  
+    <label style="width: 100%;">Year of Manufacture
+        <input class="input" type="text" name="manufacture_year" value="{{values[16]}}" placeholder="" required="">
+    </label>
+    <label style="width: 100%;">Horse Power
+        <input class="input" type="text"  name="horse_power"value="{{values[17]}}" placeholder="" required="">
+    </label>
+  
+
+      <label style="width: 100%;">Weight
+        <input class="input" type="text" name="weight" value="{{values[18]}}" placeholder="" required="">
+    </label>  
+    <label style="width: 100%;">Number of Cylinders
+        <input class="input" type="text" name="cylinders" value="{{values[19]}}" placeholder="" required="">
+    </label>  
+
+
+
+</div>
+
+
+
+
+
+
+
+
+        
+    <div class="flex">
+        <label style="width: 100%;">Date of Delivery
+            <input class="input" name="delivery_date" type="date" value="{{values[22]}}" placeholder="" required="">
+        </label>  
+    
+        <label style="width: 100%;">Licence Number
+            <input class="input" type="text" name="licnum" placeholder="" value="{{values[23]}}" required="">
+        </label> 
+
+
+
+       
+
+    </div>
+   
+ 
+    
+        <button  class="btn btn-success">Update</button>
+
+
+   
+
+    </form>
+
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+{%endblock%}

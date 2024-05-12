@@ -1,0 +1,29 @@
+@media only screen and (min-width: 768px) {
+      .navigation-menu {
+        justify-content: space-between;
+        padding: 0 16px;
+      }
+      
+     .bt{
+      display: block;
+     }
+      .navigation-menu__overlay {
+            display: none;
+          }
+
+          .hamburger-menu {
+            display: none;
+          }
+      .navigation-menu__labels {
+            position: static;
+            top: 0;
+            left: 0;
+            translate: 0 0;
+            width: auto;
+            background: transparent;
+            flex-direction: row;
+            visibility: visible;
+          }  
+            
+    }
+   
